@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PasslessScreenWidget" t-extend="ReceiptScreenWidget">
+        
+        <t t-jquery=".button.print" t-operation="after">
+            <div class="button passless-button">Passless Receipt</div>
+        </t>
+    </t>
+    <!-- <t t-name="PasslessScreenWidget">
+        <div><h1>HALLO!</h1></div>
+    </t> -->
+</templates>
