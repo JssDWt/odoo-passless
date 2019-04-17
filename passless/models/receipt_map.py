@@ -1,4 +1,4 @@
-from passless_models import Receipt, Item, Vendor, Discount, Loyalty, Payment, TaxClass, Price, Fee
+from passless_models import Wrapper, Receipt, Item, Vendor, Discount, Loyalty, Payment, TaxClass, Price, Fee
 import dateutil
 from decimal import Decimal, getcontext
 import logging
@@ -90,7 +90,7 @@ def map_receipt(receipt):
         }
     )
 
-    return Receipt(
+    result = Receipt(
         time = dateutil.parser.parse(receipt['date']['isostring']),
         currency = receipt['currency']['name'],
         subtotal=Price(
@@ -120,6 +120,11 @@ def map_receipt(receipt):
         vendorReference=receipt['name'],
         fees=None,
         loyalties=None
+    )
+
+    return Wrapper(
+        version="0.1.0",
+        receipt=result
     )
 
 def get_payment_method(journal):

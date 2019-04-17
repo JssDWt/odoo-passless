@@ -20,7 +20,7 @@ class Passless(http.Controller):
         passlessReceipt = map_receipt(receipt)
         # settings = http.request.env['passless.settings']
         # atts = settings.get_values() # not working
-        resp = requests.post('http://raspberrypi.local:8080/send', data=passlessReceipt.to_json(), headers={'Content-type': 'application/json'})
+        resp = requests.post('http://localhost:8080/send', data=passlessReceipt.to_json(), headers={'Content-type': 'application/json'})
         _logger.info(
             'Got response from nfc: status: %s, body: %s', 
             str(resp.status_code), 
